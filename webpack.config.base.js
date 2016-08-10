@@ -1,5 +1,4 @@
 import path from 'path';
-import webpack from 'webpack';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 
@@ -44,7 +43,6 @@ export default {
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
   plugins: [
-    new webpack.IgnorePlugin(/^(README.md)$/),
     new ProgressBarPlugin()
   ],
   externals: [

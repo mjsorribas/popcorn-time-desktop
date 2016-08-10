@@ -345,6 +345,8 @@ export default class Movie extends Component {
       switch (this.state.currentPlayer) {
         case 'VLC':
           return this.player.initVLC(servingUrl);
+        case 'Chromecast':
+          return this.player.initCast(servingUrl);
         case 'Default':
           if (Player.isFormatSupported(filename, Player.nativePlaybackFormats)) {
             this.setState({ usingVideoFallback: false });
@@ -518,6 +520,11 @@ export default class Movie extends Component {
                         onClick={this.setPlayer.bind(this, 'VLC')}
                       >
                         VLC
+                      </DropdownItem>
+                      <DropdownItem
+                        onClick={this.setPlayer.bind(this, 'Chromecast')}
+                      >
+                        Chromecast
                       </DropdownItem>
                     </DropdownMenu>
                   </Dropdown>

@@ -1,6 +1,7 @@
 import plyr from 'plyr';
 import childProcess from 'child_process';
 import vlcCommand from 'vlc-command';
+import chromecasts from 'chromecasts';
 
 
 export default class Player {
@@ -56,6 +57,17 @@ export default class Player {
     return mimeTypes.find(
       mimeType => filename.toLowerCase().includes(mimeType)
     );
+  }
+
+  initCast(streamingUrl) {
+    chromecasts().on('update', player => {
+      console.info('all players: ', chromecasts.players);
+
+      player.play(streamingUrl, {
+        title: 'my video',
+        type: 'video/mp4'
+      });
+    });
   }
 
   initPlyr(streamingUrl, metadata = {}) {
